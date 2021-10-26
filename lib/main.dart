@@ -31,6 +31,7 @@ class MainApplication extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Islami',
+      debugShowCheckedModeBanner: false,
       theme: MyThemeData.lightTheme,
       darkTheme: MyThemeData.darkTheme,
       routes: {HomeScreen.routeName: (buildContext) => HomeScreen()},
