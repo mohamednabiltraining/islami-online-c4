@@ -21,8 +21,10 @@ class _HomeScreenState extends State<HomeScreen> {
       children: [
         Image.asset('assets/images/main_background.png'),
         Scaffold(
+
           appBar: AppBar(
             title: Text('islami'),
+            centerTitle: true,
           ),
           bottomNavigationBar: Theme(
             data: Theme.of(context)
