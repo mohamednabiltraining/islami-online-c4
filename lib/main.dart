@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:islami_online_c4/home/HomeScreen.dart';
+import 'package:islami_online_c4/home/quran/SuraDetailsScreen.dart';
 
 void main() {
   runApp(MainApplication());
@@ -13,6 +14,8 @@ class MyThemeData {
       appBarTheme: AppBarTheme(
         backgroundColor: Colors.transparent,
         elevation: 0,
+        centerTitle: true,
+        iconTheme: IconThemeData(color: Colors.black),
         titleTextStyle: TextStyle(color: Colors.black, fontSize: 30),
       ),
       bottomNavigationBarTheme: BottomNavigationBarThemeData(
@@ -22,6 +25,7 @@ class MyThemeData {
       primaryColor: MyThemeData.primaryColor,
       appBarTheme: AppBarTheme(
           backgroundColor: Colors.transparent,
+          centerTitle: true,
           elevation: 0,
           titleTextStyle: TextStyle(color: Colors.black, fontSize: 30)));
 }
@@ -33,7 +37,10 @@ class MainApplication extends StatelessWidget {
       title: 'Islami',
       theme: MyThemeData.lightTheme,
       darkTheme: MyThemeData.darkTheme,
-      routes: {HomeScreen.routeName: (buildContext) => HomeScreen()},
+      routes: {
+        HomeScreen.routeName: (buildContext) => HomeScreen(),
+        SuraDetailsScreen.routeName: (buildContext) => SuraDetailsScreen()
+      },
       initialRoute: HomeScreen.routeName,
     );
   }
