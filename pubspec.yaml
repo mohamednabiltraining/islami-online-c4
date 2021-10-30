@@ -63,6 +63,9 @@ flutter:
     - assets/images/quran.png
     - assets/images/quran-quran-svgrepo-com.png
     - assets/images/sebha.png
+    - assets/images/body of seb7a.png
+    - assets/images/head of seb7a.png
+    - assets/images/bg3.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
