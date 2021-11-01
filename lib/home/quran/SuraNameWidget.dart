@@ -19,9 +19,7 @@ class SuraNameWidget extends StatelessWidget {
         child: Text(
           suraName,
           textAlign: TextAlign.center,
-          style: TextStyle(
-            fontSize: 24,
-          ),
+          style: Theme.of(context).primaryTextTheme.headline2,
         ),
       ),
     );

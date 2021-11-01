@@ -18,9 +18,7 @@ class HadethNameWidget extends StatelessWidget {
         padding: EdgeInsets.all(8),
         child: Text(
           item.title,
-          style: TextStyle(
-            fontSize: 24,
-          ),
+          style: Theme.of(context).primaryTextTheme.headline2,
           textAlign: TextAlign.center,
         ),
       ),
