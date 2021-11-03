@@ -61,6 +61,7 @@ class MainApplication extends StatelessWidget {
     var provider = Provider.of<AppConfigProvider>(context);
 
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Islami',
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,

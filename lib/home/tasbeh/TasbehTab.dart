@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:islami_online_c4/providers/AppConfigProvider.dart';
+import 'package:provider/provider.dart';
 
 import '../../main.dart';
 
@@ -23,6 +25,8 @@ class _TasbehTabState extends State<TasbehTab> {
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<AppConfigProvider>(context);
+
     return Center(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -32,7 +36,11 @@ class _TasbehTabState extends State<TasbehTab> {
             children: [
               Container(
                   margin: EdgeInsets.only(left: 50),
-                  child: Image.asset('assets/images/headofseb7a.png')),
+                  child: Image.asset(
+                    provider.isDarkMode()
+                        ? 'assets/images/head of seb7a.png'
+                        : 'assets/images/headofseb7a.png',
+                  )),
               Container(
                   margin: EdgeInsets.only(top: 78),
                   child: Transform.rotate(
@@ -42,8 +50,11 @@ class _TasbehTabState extends State<TasbehTab> {
                             onTap: () => onPressed_tasbeh(),
                             borderRadius: BorderRadius.circular(120),
                             splashColor: Colors.transparent,
-                            child:
-                                Image.asset('assets/images/bodyofseb7a.png'))),
+                            child: Image.asset(
+                              provider.isDarkMode()
+                                  ? 'assets/images/body of seb7a.png'
+                                  : 'assets/images/bodyofseb7a.png',
+                            ))),
                   ))
             ],
           ),
@@ -54,6 +65,7 @@ class _TasbehTabState extends State<TasbehTab> {
             'عدد التسبيحات ',
             style: TextStyle(
               fontSize: 25,
+              color: provider.isDarkMode() ? Colors.white : Colors.black,
             ),
           ),
           SizedBox(
@@ -61,17 +73,26 @@ class _TasbehTabState extends State<TasbehTab> {
           ),
           Container(
             decoration: BoxDecoration(
-                color: Color(0xFFC7B295),
+                color: provider.isDarkMode()
+                    ? MyThemeData.primaryColorDark
+                    : MyThemeData.primaryColor,
                 borderRadius: BorderRadius.circular(20)),
             padding: EdgeInsets.all(20),
-            child: Text('$Number_Tasbeh'),
+            child: Text(
+              '$Number_Tasbeh',
+              style: TextStyle(
+                color: provider.isDarkMode() ? Colors.white : Colors.black,
+              ),
+            ),
           ),
           SizedBox(
             height: 20,
           ),
           Container(
             decoration: BoxDecoration(
-                color: MyThemeData.primaryColor,
+                color: provider.isDarkMode()
+                    ? MyThemeData.accentColorDark
+                    : MyThemeData.primaryColor,
                 borderRadius: BorderRadius.circular(20)),
             padding: EdgeInsets.all(5),
             child: Text(
@@ -79,7 +100,7 @@ class _TasbehTabState extends State<TasbehTab> {
               style: TextStyle(
                   fontSize: 25,
                   fontWeight: FontWeight.bold,
-                  color: Colors.white),
+                  color: provider.isDarkMode() ? Colors.black : Colors.white),
               textAlign: TextAlign.center,
             ),
           ),
