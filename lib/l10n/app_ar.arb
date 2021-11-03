@@ -8,5 +8,7 @@
   "language": "اللغه",
   "theme": "النمط",
   "light": "مضئ",
-  "dark": "ليلي"
+  "dark": "ليلي",
+  "suraname": "اسم السورة",
+  "hadethname": "اسم الحديث"
 }

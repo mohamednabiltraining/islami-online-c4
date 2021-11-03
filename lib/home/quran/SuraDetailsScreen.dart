@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:islami_online_c4/home/quran/VerseWidget.dart';
+import 'package:islami_online_c4/providers/AppConfigProvider.dart';
+import 'package:provider/provider.dart';
+
+import '../../main.dart';
 
 class SuraDetailsScreen extends StatefulWidget {
   static const String routeName = 'sura-details';
@@ -14,21 +18,34 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<AppConfigProvider>(context);
+
     var args = ModalRoute.of(context)!.settings.arguments as SuraDetailsArgs;
     if (ayat.isEmpty) readSura(args.index);
     return Stack(children: [
       Image.asset(
-        'assets/images/main_background.png',
+        provider.isDarkMode()
+            ? 'assets/images/main_background_dark.png'
+            : 'assets/images/main_background.png',
         fit: BoxFit.fill,
         width: double.infinity,
       ),
       Scaffold(
           appBar: AppBar(
-            title: Text(args.name),
+            title: Text(
+              args.name,
+              style: TextStyle(
+                color: provider.isDarkMode()
+                    ? MyThemeData.accentColorDark
+                    : Colors.black,
+              ),
+            ),
           ),
           body: Container(
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: provider.isDarkMode()
+                  ? MyThemeData.primaryColorDark
+                  : Colors.white,
               borderRadius: BorderRadius.circular(24),
             ),
             margin: EdgeInsets.symmetric(horizontal: 24, vertical: 48),
@@ -36,18 +53,18 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
             child: ayat.isEmpty
                 ? Center(child: CircularProgressIndicator())
                 : ListView.separated(
-                    itemBuilder: (buildContext, index) {
-                      return VerseWidget(ayat[index], index);
-                    },
-                    itemCount: ayat.length,
-                    separatorBuilder: (buildContext, index) {
-                      return Container(
-                        height: 1,
-                        color: Theme.of(context).primaryColor,
-                        margin: EdgeInsets.symmetric(horizontal: 24),
-                      );
-                    },
-                  ),
+              itemBuilder: (buildContext, index) {
+                return VerseWidget(ayat[index], index);
+              },
+              itemCount: ayat.length,
+              separatorBuilder: (buildContext, index) {
+                return Container(
+                  height: 1,
+                  color: Theme.of(context).primaryColor,
+                  margin: EdgeInsets.symmetric(horizontal: 24),
+                );
+              },
+            ),
           ))
     ]);
   }

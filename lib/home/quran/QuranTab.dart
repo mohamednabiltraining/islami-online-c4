@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islami_online_c4/home/quran/SuraNameWidget.dart';
 import 'package:islami_online_c4/main.dart';
 import 'package:islami_online_c4/providers/AppConfigProvider.dart';
@@ -134,6 +135,32 @@ class QuranTab extends StatelessWidget {
               Image.asset('assets/images/quran_top_logo.png'),
             ],
           ),
+        ),
+        Column(
+          children: [
+            Divider(
+              height: 1,
+              color: provider.isDarkMode()
+                  ? MyThemeData.accentColorDark
+                  : MyThemeData.primaryColor,
+              thickness: 1,
+            ),
+            Text(
+              AppLocalizations.of(context)!.suraname,
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+                color: provider.isDarkMode() ? Colors.white : Colors.black,
+              ),
+            ),
+            Divider(
+              height: 1,
+              color: provider.isDarkMode()
+                  ? MyThemeData.accentColorDark
+                  : MyThemeData.primaryColor,
+              thickness: 1,
+            ),
+          ],
         ),
         Expanded(
           flex: 3,
