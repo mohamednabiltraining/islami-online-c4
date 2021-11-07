@@ -15,60 +15,62 @@ class _TasbehTabState extends State<TasbehTab> {
   double angle=0;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        children: [
-          Stack(
-            alignment: AlignmentDirectional.topCenter,
-            children: [
-              InkWell(
-                onTap: ontasbeh_click,
-                child: Container(
-                  margin: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.1),
-                  child: Transform.rotate(
-                      angle:math.pi/180* angle,
-                      child: Image.asset('assets/images/bodylogo.png')),
+    return Center(
+      child: Container(
+        child: Column(
+          children: [
+            Stack(
+              alignment: AlignmentDirectional.topCenter,
+              children: [
+                InkWell(
+                  onTap: ontasbeh_click,
+                  child: Container(
+                    margin: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.1),
+                    child: Transform.rotate(
+                        angle:math.pi/180* angle,
+                        child: Image.asset('assets/images/bodylogo.png')),
+                  ),
                 ),
-              ),
-              Container(
-                margin: EdgeInsets.only(left: MediaQuery.of(context).size.height*0.05),
-                child: Image.asset('assets/images/headlogo.png'),
-              ),
-            ],
-          ),
-          Expanded(child: Column(
-            children: [
-              Container(
-                  margin: EdgeInsets.only(top: 10),
-                  child: Text('Tesabeh number',style: TextStyle(fontSize: 25,
-                    fontWeight:FontWeight.w600,),
-                  )),
-              SizedBox(height: 20,),
-              Container(
-                padding: EdgeInsets.all(24),
-                decoration: BoxDecoration(
-                  color: MyThemeData.primaryColor,
-                  borderRadius: BorderRadius.circular(15),
-
-
+                Container(
+                  margin: EdgeInsets.only(left: MediaQuery.of(context).size.height*0.05),
+                  child: Image.asset('assets/images/headlogo.png'),
                 ),
-                child: Text('$counter',style: TextStyle(fontSize: 30,fontWeight: FontWeight.bold),),
-              ),
-              Container(
-                padding: EdgeInsets.all(20),
-                decoration: BoxDecoration(
-                  color: MyThemeData.primaryColor,
-                  borderRadius: BorderRadius.circular(30),
+              ],
+            ),
+            Expanded(child: Column(
+              children: [
+                Container(
+                    margin: EdgeInsets.only(top: 10),
+                    child: Text('Tesabeh number',style: TextStyle(fontSize: 25,
+                      fontWeight:FontWeight.w600,),
+                    )),
+                SizedBox(height: 20,),
+                Container(
+                  padding: EdgeInsets.all(24),
+                  decoration: BoxDecoration(
+                    color: MyThemeData.primaryColor,
+                    borderRadius: BorderRadius.circular(15),
 
 
+                  ),
+                  child: Text('$counter',style: TextStyle(fontSize: 30,fontWeight: FontWeight.bold),),
                 ),
-                child: Text(tasbehlist[currentindex],style: TextStyle(fontSize: 30,
-                    fontWeight: FontWeight.bold,color: Colors.white),),
-              )
-            ],
-          )),
+                Container(
+                  padding: EdgeInsets.all(20),
+                  decoration: BoxDecoration(
+                    color: MyThemeData.primaryColor,
+                    borderRadius: BorderRadius.circular(30),
 
-        ],
+
+                  ),
+                  child: Text(tasbehlist[currentindex],style: TextStyle(fontSize: 30,
+                      fontWeight: FontWeight.bold,color: Colors.white),),
+                )
+              ],
+            )),
+
+          ],
+        ),
       ),
     );
   }
@@ -78,7 +80,7 @@ class _TasbehTabState extends State<TasbehTab> {
       angle+=30;
       counter++;
       if(counter%33==0){
-        if(currentindex==4){
+        if(currentindex==3){
           currentindex=0;
         }
         currentindex++;
