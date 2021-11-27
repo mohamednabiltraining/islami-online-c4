@@ -5,6 +5,7 @@ import 'package:islami_online_c4/home/hadeth/HadethDetailsScreen.dart';
 import 'package:islami_online_c4/home/quran/SuraDetailsScreen.dart';
 import 'package:islami_online_c4/providers/AppConfigProvider.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
   runApp(ChangeNotifierProvider(
@@ -56,10 +57,13 @@ class MyThemeData {
 }
 
 class MainApplication extends StatelessWidget {
+  late AppConfigProvider provider;
+  late SharedPreferences prefs;
+
   @override
   Widget build(BuildContext context) {
-    var provider = Provider.of<AppConfigProvider>(context);
-
+    provider = Provider.of<AppConfigProvider>(context);
+    intiSharedpreference();
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Islami',
@@ -76,5 +80,15 @@ class MainApplication extends StatelessWidget {
       },
       initialRoute: HomeScreen.routeName,
     );
+  }
+
+  void intiSharedpreference() async {
+    prefs = await SharedPreferences.getInstance();
+    provider.changeLanguage(prefs.getString('language') ?? 'en');
+    if (prefs.getString('theme') == 'light') {
+      provider.changeTheme(ThemeMode.light);
+    } else if (prefs.getString('theme') == 'dark') {
+      provider.changeTheme(ThemeMode.dark);
+    }
   }
 }
