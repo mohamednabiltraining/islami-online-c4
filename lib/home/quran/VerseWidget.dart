@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:islami_online_c4/providers/AppConfigProvider.dart';
+import 'package:provider/provider.dart';
+
+import '../../main.dart';
 
 class VerseWidget extends StatelessWidget {
   String text;
@@ -8,6 +12,8 @@ class VerseWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<AppConfigProvider>(context);
+
     return Container(
       padding: EdgeInsets.symmetric(vertical: 8),
       child: Text(
@@ -15,6 +21,9 @@ class VerseWidget extends StatelessWidget {
         textAlign: TextAlign.center,
         style: TextStyle(
           fontSize: 18,
+          color: provider.isDarkMode()
+              ? MyThemeData.accentColorDark
+              : Colors.black,
         ),
         textDirection: TextDirection.rtl,
       ),
