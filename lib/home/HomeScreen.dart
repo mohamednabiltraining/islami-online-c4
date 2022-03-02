@@ -7,11 +7,9 @@ import 'package:islami_online_c4/main.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = 'home';
-
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
-
 class _HomeScreenState extends State<HomeScreen> {
   int currentIndex = 0;
 
